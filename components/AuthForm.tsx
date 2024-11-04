@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { authFormSchema } from '@/lib/utils';
+import CustomInput from './CustomInput';
 
 
 const AuthForm = ({ type }: { type: string }) => {
@@ -78,27 +79,14 @@ const AuthForm = ({ type }: { type: string }) => {
       <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <div className='form-item'>
-                <FormLabel className='form-label'>
-                  Email
-                </FormLabel>
-                <div className='flex w-full flex-col'>
-                  <FormControl>
-                    <Input 
-                      placeholder='Enter your email'
-                      className='input-class'
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage className='form-message mt-2' />
-                </div>
-              </div>
-            )}
-          />
+          <CustomInput control={form.control}
+          name='email' label='Username'
+          placeholder='Enter your username'/>
+
+          <CustomInput control={form.control}
+          name='password' label='Password'
+          placeholder='Enter your password'/>
+
           <Button type="submit">Submit</Button>
         </form>
       </Form>
